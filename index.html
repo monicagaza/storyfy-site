@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story.fy — Product marketing that turns complexity into demand</title>
+    <meta name="description" content="Product marketing for technically complex B2B companies in payments, fintech, identity and security. Strategy-led, execution available.">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --plum: #9E3E7C;
+            --plum-dark: #7A2F60;
+            --amber: #FCC156;
+            --amber-hover: #E5AD44;
+            --cream: #FCF5F1;
+            --ink: #2C2A2E;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+            font-weight: 300;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2.5rem;
+            background: rgba(252, 245, 241, 0.92);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--plum);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .logo span { color: var(--amber); }
+
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+
+        .nav-link {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .nav-link:hover { opacity: 1; }
+
+        .nav-cta {
+            background: var(--plum);
+            color: var(--white);
+            padding: 0.6rem 1.4rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .nav-cta:hover { background: var(--plum-dark); }
+
+        .hero {
+            background: var(--plum);
+            color: var(--white);
+            padding: 7rem 2.5rem 6rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.12;
+            max-width: 720px;
+            margin: 0 auto 1.8rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero .tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            font-weight: 500;
+            color: var(--amber);
+            margin-bottom: 0.4rem;
+        }
+
+        .hero .sub-line {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 2.8rem;
+            font-weight: 300;
+        }
+
+        .btn-amber {
+            display: inline-block;
+            background: var(--amber);
+            color: var(--ink);
+            padding: 0.85rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-amber:hover { background: var(--amber-hover); transform: translateY(-2px); }
+
+        section { padding: 5.5rem 2.5rem; }
+        .inner { max-width: 880px; margin: 0 auto; }
+
+        h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--plum);
+            letter-spacing: -0.02em;
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            max-width: 640px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        /* PROBLEMS */
+        .problems { background: var(--white); }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .problem-card {
+            background: var(--cream);
+            border-radius: 10px;
+            padding: 1.8rem;
+            border-left: 4px solid var(--amber);
+        }
+
+        .problem-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--plum);
+        }
+
+        .problem-card p {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            opacity: 0.8;
+        }
+
+        /* WHY ME */
+        .why-me { background: var(--cream); }
+
+        .why-me-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .headshot {
+            width: 100%;
+            border-radius: 12px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .arc-entry {
+            padding-left: 1.2rem;
+            border-left: 2px solid var(--amber);
+            margin-bottom: 0.9rem;
+        }
+
+        .arc-company {
+            font-weight: 700;
+            color: var(--plum);
+            font-size: 0.92rem;
+        }
+
+        .arc-role {
+            font-size: 0.8rem;
+            opacity: 0.55;
+            font-weight: 500;
+        }
+
+        .arc-desc {
+            font-size: 0.88rem;
+            margin-top: 0.15rem;
+            line-height: 1.55;
+        }
+
+        /* SERVICES */
+        .services { background: var(--white); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .service-card {
+            background: var(--cream);
+            border-radius: 10px;
+            padding: 1.8rem;
+            border-top: 4px solid var(--amber);
+        }
+
+        .service-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            color: var(--plum);
+        }
+
+        .service-card .tier {
+            font-size: 0.78rem;
+            font-weight: 500;
+            opacity: 0.5;
+            margin-bottom: 0.6rem;
+        }
+
+        .service-card p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* CTA BAND */
+        .cta-band {
+            background: var(--plum);
+            color: var(--white);
+            text-align: center;
+            padding: 5.5rem 2.5rem;
+        }
+        .cta-band h2 { color: var(--white); }
+        .cta-band .tagline {
+            color: var(--amber);
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.82rem;
+            opacity: 0.5;
+        }
+        footer a {
+            color: var(--plum);
+            text-decoration: none;
+        }
+        footer a:hover { text-decoration: underline; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        @media (max-width: 700px) {
+            nav { padding: 1rem 1.5rem; }
+            section, .cta-band { padding: 3.5rem 1.5rem; }
+            .hero { padding: 4.5rem 1.5rem 4rem; }
+            .why-me-grid { grid-template-columns: 1fr; }
+            .headshot { max-width: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="logo">Story<span>.</span>fy</a>
+    <div class="nav-right">
+        <a href="https://linkedin.com/in/monica-gaza-marketing-manager" target="_blank" rel="noopener" class="nav-link">LinkedIn</a>
+        <a href="mailto:monica.gaza@gmail.com" class="nav-cta">Let's talk</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="inner">
+        <h1>Every complex product has a story. Most are telling the wrong one.</h1>
+        <p class="tagline">Product marketing that turns complexity into demand.</p>
+        <p class="sub-line">For payments, fintech, identity and security.</p>
+        <a href="mailto:monica.gaza@gmail.com" class="btn-amber">Get in touch</a>
+    </div>
+</section>
+
+<section class="problems">
+    <div class="inner">
+        <h2>The translation problem</h2>
+        <p class="lead">Most of my clients don't have a marketing problem. They have a translation problem. The value is real. The articulation isn't.</p>
+        <div class="problem-grid">
+            <div class="problem-card reveal">
+                <h3>A great product nobody can explain</h3>
+                <p>Engineering-led, feature-rich, whether one product or a whole portfolio. The website reads like a spec sheet and buyers can't tell what any of it does for them.</p>
+            </div>
+            <div class="problem-card reveal">
+                <h3>Product, marketing and sales telling different stories</h3>
+                <p>Multiple products described in isolation, nothing differentiated. Three teams, three descriptions of the same thing. Sales builds its own decks because marketing's don't land.</p>
+            </div>
+            <div class="problem-card reveal">
+                <h3>No one senior owning the narrative</h3>
+                <p>A founder or CMO who knows the product is mis-sold but doesn't have the time or the specific skill to fix the messaging layer.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="why-me">
+    <div class="inner">
+        <h2>I already speak your industry.</h2>
+        <p class="lead">Most marketing consultants need three months to understand a complex product. I don't. I spent five years as a payments-industry analyst before I ever ran a campaign. Domain fluency isn't a claim. It's my origin.</p>
+        <div class="why-me-grid reveal">
+            <img src="img/monica.jpg" alt="Monica Gâza" class="headshot">
+            <div>
+                <div class="arc-entry">
+                    <div class="arc-company">The Paypers <span class="arc-role">· Senior Market Analyst · 5 years</span></div>
+                    <p class="arc-desc">Covered payments, e-invoicing, e-identity and SEPA for a C-level readership across 120+ countries.</p>
+                </div>
+                <div class="arc-entry">
+                    <div class="arc-company">Unifiedpost <span class="arc-role">· Marketing Executive · 2 years</span></div>
+                    <p class="arc-desc">Built a fintech's Romanian marketing function from zero.</p>
+                </div>
+                <div class="arc-entry">
+                    <div class="arc-company">LASTING Group <span class="arc-role">· Marketing Manager · 9 years</span></div>
+                    <p class="arc-desc">Full P&L, team, budget and 100+ events/year across three tech business lines. Co-marketing with Dell, Fujitsu, HP/POLY.</p>
+                </div>
+                <div class="arc-entry">
+                    <div class="arc-company">OPSWAT <span class="arc-role">· Product Marketing Manager</span></div>
+                    <p class="arc-desc">Messaging frameworks, value propositions, battle cards and full sales enablement for a cloud security portfolio.</p>
+                </div>
+                <div class="arc-entry">
+                    <div class="arc-company">Evrotrust <span class="arc-role">· Marketing Manager</span></div>
+                    <p class="arc-desc">Market intelligence and GTM in the eIDAS/QTSP digital trust space.</p>
+                </div>
+                <div class="arc-entry">
+                    <div class="arc-company">Story.fy <span class="arc-role">· Independent · 2026</span></div>
+                    <p class="arc-desc">Product marketing for technically complex B2B. Strategy-led, execution available.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services">
+    <div class="inner">
+        <h2>How we work</h2>
+        <p class="lead">Strategy-led, with execution available. Three ways in, depending on what you need.</p>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <h3>Positioning & Messaging Sprint</h3>
+                <p class="tier">Project-based</p>
+                <p>A fixed-scope engagement that solves the translation problem. From discovery through to a messaging framework, value propositions and competitive assets your whole team can use.</p>
+            </div>
+            <div class="service-card reveal">
+                <h3>Fractional Product Marketing</h3>
+                <p class="tier">Monthly retainer</p>
+                <p>Ongoing senior ownership of the messaging and GTM layer. Positioning, launches, sales enablement, competitive intelligence. This is how most of my clients work with me.</p>
+            </div>
+            <div class="service-card reveal">
+                <h3>Go-to-Market Launch</h3>
+                <p class="tier">Project-based</p>
+                <p>A defined launch or repositioning: positioning through content, campaign, enablement and measurement.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-band">
+    <div class="inner">
+        <h2>You built it. I'll explain it.</h2>
+        <p class="tagline">Product marketing for payments, fintech, identity and security.</p>
+        <a href="mailto:monica.gaza@gmail.com" class="btn-amber">Get in touch</a>
+    </div>
+</section>
+
+<footer>© 2026 Story.fy · Context Creative SRL · <a href="https://linkedin.com/in/monica-gaza-marketing-manager" target="_blank" rel="noopener">LinkedIn</a></footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
